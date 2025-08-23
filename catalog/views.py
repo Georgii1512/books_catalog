@@ -27,6 +27,16 @@ class CatalogBookDeleteView(DeleteView):
     success_url = reverse_lazy('catalog:books_list')
     context_object_name = 'catalog_book'
 
+    # Configured to use 'isbn' instead of 'pk'
+    pk_url_kwarg = 'isbn'
+    slug_field = 'isbn'
+    slug_url_kwarg = 'isbn'
+
+    def get_object(self, queryset=None):
+        isbn = self.kwargs.get('isbn')
+        book = CatalogBook.objects.get(isbn=isbn)
+        return book
+
 
 class CatalogBookUpdateView(UpdateView):
     template_name = 'catalog-book-update.html'
@@ -34,3 +44,13 @@ class CatalogBookUpdateView(UpdateView):
     form_class = CatalogBookForm
     context_object_name = 'catalog_book'
     success_url = reverse_lazy('catalog:books_list')
+
+    # Configured to use 'isbn' instead of 'pk'
+    pk_url_kwarg = 'isbn'
+    slug_field = 'isbn'
+    slug_url_kwarg = 'isbn'
+
+    def get_object(self, queryset=None):
+        isbn = self.kwargs.get('isbn')
+        book = CatalogBook.objects.get(isbn=isbn)
+        return book

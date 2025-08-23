@@ -1,14 +1,14 @@
 from django.db import models
 
 # Create your models here.
-NA = 'N/A'
+DEFAULT_STR = ''
 
 
 class CatalogBook(models.Model):
     author = models.CharField(
         max_length=200,
         blank=True,
-        default=NA,
+        default=DEFAULT_STR,
         help_text='Enter author name')
     title = models.CharField(
         max_length=200,
@@ -17,11 +17,11 @@ class CatalogBook(models.Model):
     seria = models.CharField(
         max_length=200,
         blank=True,
-        default=NA,
+        default=DEFAULT_STR,
         help_text='Enter book seria')
     pages_count = models.PositiveSmallIntegerField(
         blank=True,
-        default=NA,
+        null=True,
         help_text='Enter book pages count')
     year = models.PositiveSmallIntegerField(
         blank=True,
@@ -30,12 +30,11 @@ class CatalogBook(models.Model):
     language = models.CharField(
         max_length=200,
         blank=True,
-        default=NA,
+        default=DEFAULT_STR,
         help_text='Enter number of the pages in book')
     isbn = models.CharField(
         max_length=13,
         unique=True,
-        primary_key=True,
         help_text='Enter book ISBN')
 
     class Meta:

@@ -14,8 +14,8 @@
                         <li class="list-group-item mb-2">
                             <p>{{ book.title }}, by {{ book.author }}, ISBN: {{ book.isbn }}</p>
                             <div class="row justify-content-between">
-                                <a href="{% url 'catalog:book_update' book.pk %}" class="link-opacity-100 link-success col-3">Update</a>
-                                <a href="{% url 'catalog:book_delete' book.pk %}" class="link-opacity-100 link-danger col-3">Delete</a>
+                                <a href="{% url 'catalog:book_update' book.isbn %}" class="link-opacity-100 link-success col-3">Update</a>
+                                <a href="{% url 'catalog:book_delete' book.isbn %}" class="link-opacity-100 link-danger col-3">Delete</a>
                             </div>
                         </li>
                     {% endfor %}
