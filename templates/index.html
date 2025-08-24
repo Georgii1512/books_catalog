@@ -7,6 +7,9 @@
 {% block content %}
 	<h1 class="h1">Index</h1>
     <a href="{% url 'catalog:book_create' %}" class="link-opacity-100">Create new book</a>
+    <hr>
     <a href="{% url 'catalog:books_list' %}" class="link-opacity-100">Books list</a>
+    <hr>
+    <a href="{% url 'catalog:book_search' %}" class="link-opacity-100">Search</a>
 
 {% endblock %}

@@ -9,5 +9,6 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('catalog/create/', views.CatalogBookCreateView.as_view(), name='book_create'),
     path('catalog/books-list/', views.CatalogBooksListView.as_view(), name='books_list'),
+    path('search/', views.CatalogBookSearchView.as_view(), name='book_search'),
 
 ]

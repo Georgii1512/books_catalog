@@ -12,7 +12,6 @@ class CatalogBook(models.Model):
         help_text='Enter author name')
     title = models.CharField(
         max_length=200,
-        unique=True,
         help_text='Enter book title')
     seria = models.CharField(
         max_length=200,

@@ -1,6 +1,7 @@
 from django import forms
 from . import models
 
+
 class CatalogBookForm(forms.ModelForm):
     class Meta:
         model = models.CatalogBook
@@ -26,4 +27,5 @@ class CatalogBookForm(forms.ModelForm):
             field.widget.attrs['placeholder'] = field.label
 
 
-
+class CatalogBookSearchForm(forms.Form):
+    isbn = forms.CharField(label='ISBN', max_length=13, required=True)

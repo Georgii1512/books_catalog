@@ -1,6 +1,6 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, TemplateView, DeleteView, UpdateView
-from .forms import CatalogBookForm
+from django.views.generic import ListView, CreateView, TemplateView, DeleteView, UpdateView, DetailView
+from .forms import CatalogBookForm, CatalogBookSearchForm
 from .models import CatalogBook
 
 # Create your views here.
@@ -54,3 +54,26 @@ class CatalogBookUpdateView(UpdateView):
         isbn = self.kwargs.get('isbn')
         book = CatalogBook.objects.get(isbn=isbn)
         return book
+
+
+class CatalogBookSearchView(DetailView):
+    template_name = 'book-search.html'
+    model = CatalogBook
+    context_object_name = 'catalog_book'
+
+    def get_object(self, queryset=None):
+        isbn = self.request.GET.get('isbn')
+        if isbn:
+            book = CatalogBook.objects.get(isbn=isbn)
+        else:
+            book = None
+        return book
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['isbn'] = self.request.GET.get('isbn')
+        context['search_form'] = CatalogBookSearchForm(self.request.GET)
+        return context
+
+    # D:\Marketplace\book_parcer\vivat_books_details.csv
+
